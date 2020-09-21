@@ -1,4 +1,3 @@
-from pprint import pprint
 from datetime import datetime, timedelta
 
 import httpx
@@ -8,6 +7,9 @@ from yarl import URL
 from fastapi import Query, FastAPI
 from icalendar import Event, Calendar
 from fastapi.responses import Response
+
+FIRST = datetime(2020, 9, 13, tzinfo=timezone("Asia/Shanghai"))  # 学期第一周的周日，即开学前一天
+assert FIRST.weekday() == 6
 
 
 def data_to_ics(data):
@@ -19,10 +21,6 @@ def data_to_ics(data):
     cal.add("X-WR-TIMEZONE", "Asia/Shanghai")
 
     # MODE = "CN"
-    FIRST = datetime(2020, 9, 14).astimezone(
-        timezone("Asia/Shanghai")
-    )  # 学期第一周的周日，即开学前一天
-
     # print(
     #     data["studentTableVm"]["name"],
     #     data["studentTableVm"]["code"],
@@ -60,8 +58,6 @@ def data_to_ics(data):
         else:
             splited_week_str = [weeksStr]
         for weeksStr in splited_week_str:
-            if "-" not in weeksStr:
-                pprint(c)
             startWeek = int(weeksStr.split("-")[0])
             endWeek = int(weeksStr.split("-")[1])
             weekday = int(c["weekday"])
@@ -98,7 +94,7 @@ def data_to_ics(data):
                 },
             )
             cal.add_component(event)
-    return cal.to_ical().decode()
+    return cal.to_ical()
 
 
 async def login(username, password):
@@ -147,7 +143,9 @@ app = FastAPI()
 
 
 class CalendarResponse(Response):
-    media_type = "text/calendar"
+    # media_type = "text/calendar"
+    media_type = "text/plain"
+    # pass
 
 
 @app.get("/dispatch", response_class=CalendarResponse)
