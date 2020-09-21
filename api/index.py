@@ -39,7 +39,6 @@ def data_to_ics(data):
                 c["building"] or "",
                 " ".join(c["teachers"]).strip(),
                 c["weeksStr"] + "周",
-                c["lessonCode"],
                 str(c["credits"]) + "学分",
             ]
         )
