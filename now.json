@@ -1,0 +1,12 @@
+
+{
+  "version": 2,
+  "name": "python",
+  "public": true,
+  "routes": [
+    {
+      "src": "/dispatch",
+      "dest": "api/dispatch.py"
+    }
+  ]
+}

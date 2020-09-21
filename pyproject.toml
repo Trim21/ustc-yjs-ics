@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "ustc-yjs-ics"
+version = "2.1.4"
+maintainers = ["Trim21 <i@trim21.me>"]
+
+[tool.poetry.dependencies]
+python = "^3.6.1"
+# deps
+beautifulsoup4 = '4.9.1'
+requests = '==2.24.0'
+icalendar = '^4.0.6'
+yarl = "^1.5.1"
+httpx = "^0.14.3"
+fastapi = "^0.61.1"
+aiohttp = "^3.6.2"
+
+[tool.poetry.dev-dependencies]
+# tests
+coverage = { version = "==5.2.1", extras = ['toml'] }
+pytest = "==6.0.1"
+# lint
+pre-commit = '==2.7.1'
+mypy = "==0.782"
+flake8 = "3.8.3"
+flake8-comprehensions = "==3.2.3"
+flake8-bugbear = "==20.1.4"
+flake8-mutable = "1.2.0"
+flake8-eradicate = "^0.4.0"
+flake8-pep3101 = "^1.3.0"
+flake8-2020 = "^1.6.0"
+flake8-pytest-style = "^1.3.0"
+uvicorn = "^0.11.8"
+
+[tool.coverage.report]
+exclude_lines = [
+  'pragma: no cover',
+  'if TYPE_CHECKING:',
+  'if __name__ == "__main__":',
+  'if typing.TYPE_CHECKING:',
+  'raise NotImplementedError'
+]
+
+[tool.pytest.ini_options]
+addopts = '-v --durations=10'
+junit_family = 'legacy'
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
