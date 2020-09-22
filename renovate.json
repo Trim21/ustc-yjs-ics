@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "@trim21",
+    "@trim21:monthly"
+  ],
+  "separateMajorMinor": false,
+  "separateMinorPatch": false,
+  "rangeStrategy": "pin"
+}
