@@ -123,11 +123,9 @@ async def get_calendar(username, password):
     session = await login(username, password)
     sidebar = await session.get("http://yjs.ustc.edu.cn/m_left.asp?area=5&menu=1")
     soup = BeautifulSoup(sidebar.text, "html.parser")
-    print(soup.find("a", id="mm_2").attrs)
     session_id_name = None
     session_id_value = None
     for x in session.cookies.jar:
-        print(x, x.domain)
         if x.name.startswith("ASPSESSIONID"):
             session_id_name = x.name
             session_id_value = x.value
