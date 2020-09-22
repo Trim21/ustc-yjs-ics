@@ -123,17 +123,32 @@ async def get_calendar(username, password):
     session = await login(username, password)
     sidebar = await session.get("http://yjs.ustc.edu.cn/m_left.asp?area=5&menu=1")
     soup = BeautifulSoup(sidebar.text, "html.parser")
+    print(soup.find("a", id="mm_2").attrs)
+    session_id_name = None
+    session_id_value = None
+    for x in session.cookies.jar:
+        print(x, x.domain)
+        if x.name.startswith("ASPSESSIONID"):
+            session_id_name = x.name
+            session_id_value = x.value
+    if not (session_id_name and session_id_value):
+        raise ValueError()
     href = soup.find("a", id="mm_2").attrs["href"]
-    session_id = session.cookies.get("ASPSESSIONIDQSTCCCTB", domain="yjs.ustc.edu.cn")
     await session.get(
         str(
             URL(href).update_query(
-                {"ASPSESSIONIDQSTCCCTB": session_id},
+                {session_id_name: session_id_value},
             )
         )
     )
+    redirector_page = await session.get("https://jw.ustc.edu.cn/for-std/course-table")
+    soup = BeautifulSoup(redirector_page.text, "html.parser")
+    week_index = soup.select_one(
+        "select#allSemesters > option[selected='selected']"
+    ).attrs["value"]
+    student_id = redirector_page.url.path.split("/")[-1]
     data = await session.get(
-        "https://jw.ustc.edu.cn/for-std/course-table/semester/181/print-data/149952?weekIndex="
+        f"https://jw.ustc.edu.cn/for-std/course-table/semester/{week_index}/print-data/{student_id}?weekIndex="
     )
     return data_to_ics(data.json())
 
@@ -150,9 +165,3 @@ class CalendarResponse(Response):
 @app.get("/dispatch", response_class=CalendarResponse)
 async def dispatch(username: str = Query(...), password: str = Query(...)):
     return await get_calendar(username, password)
-
-
-if __name__ == "__main__":
-    import asyncio
-
-    print(asyncio.run(get_calendar()))
