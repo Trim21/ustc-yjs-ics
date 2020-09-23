@@ -35,8 +35,7 @@ def data_to_ics(data):
         description = " ".join(
             x.strip()
             for x in [
-                c["campus"] or c["customPlace"],
-                c["building"] or "",
+                location,
                 " ".join(c["teachers"]).strip(),
                 c["weeksStr"] + "周",
                 str(c["credits"]) + "学分",
