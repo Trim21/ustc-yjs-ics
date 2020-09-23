@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-import uvicorn.subprocess
+
 import httpx
 from bs4 import BeautifulSoup
 from pytz import timezone
@@ -31,12 +31,14 @@ def data_to_ics(data):
     # )
     for c in data["studentTableVm"]["activities"]:
         summary = c["courseName"]
-        location = " ".join([c["campus"] or c["customPlace"], c["room"] or ""]).strip()
-        description = "{} {} {} {}".format(
+        location = " ".join(
+            x for x in [c["campus"], c["customPlace"], c["building"], c["room"]] if x
+        )
+        description = "{} {} {}周 {}学分".format(
             location,
             " ".join(c["teachers"]),
-            c["weeksStr"] + "周",
-            f"{str(c['credits'])}学分",
+            c["weeksStr"],
+            c["credits"],
         )
         status = 0  # 0每周 1单周 2双周
         weeksStr = c["weeksStr"]
