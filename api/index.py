@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-
+import uvicorn.subprocess
 import httpx
 from bs4 import BeautifulSoup
 from pytz import timezone
@@ -31,15 +31,12 @@ def data_to_ics(data):
     # )
     for c in data["studentTableVm"]["activities"]:
         summary = c["courseName"]
-        location = " ".join([c["campus"] or c["customPlace"], c["room"] or ""])
-        description = " ".join(
-            x.strip()
-            for x in [
-                location,
-                " ".join(c["teachers"]).strip(),
-                c["weeksStr"] + "周",
-                str(c["credits"]) + "学分",
-            ]
+        location = " ".join([c["campus"] or c["customPlace"], c["room"] or ""]).strip()
+        description = "{} {} {} {}".format(
+            location,
+            " ".join(c["teachers"]),
+            c["weeksStr"] + "周",
+            f"{str(c['credits'])}学分",
         )
         status = 0  # 0每周 1单周 2双周
         weeksStr = c["weeksStr"]
@@ -50,19 +47,16 @@ def data_to_ics(data):
             status = 2
             weeksStr = weeksStr.replace("双", "")
         if "," in weeksStr:
-            splited_week_str = [x.strip() for x in weeksStr.split(",")]
+            split_week_str = [x.strip() for x in weeksStr.split(",")]
         elif "-" not in weeksStr:
-            splited_week_str = [f"{weeksStr}-{weeksStr}"]
+            split_week_str = [f"{weeksStr}-{weeksStr}"]
         else:
-            splited_week_str = [weeksStr]
-        for weeksStr in splited_week_str:
-            startWeek = int(weeksStr.split("-")[0])
-            endWeek = int(weeksStr.split("-")[1])
+            split_week_str = [weeksStr]
+        for weeks_str in split_week_str:
             weekday = int(c["weekday"])
-            sHour = int(c["startDate"].split(":")[0])
-            sMin = int(c["startDate"].split(":")[1])
-            eHour = int(c["endDate"].split(":")[0])
-            eMin = int(c["endDate"].split(":")[1])
+            start_week, end_week = map(int, weeks_str.split("-"))
+            start_hour, start_min = map(int, c["startDate"].split(":"))
+            end_hour, end_min = map(int, c["endDate"].split(":"))
             event = Event()
             event.add("summary", summary)
             event.add("location", location)
@@ -71,14 +65,17 @@ def data_to_ics(data):
                 "dtstart",
                 FIRST
                 + timedelta(
-                    days=weekday, weeks=startWeek - 1, hours=sHour, minutes=sMin
+                    days=weekday,
+                    weeks=start_week - 1,
+                    hours=start_hour,
+                    minutes=start_min,
                 ),
             )
             event.add(
                 "dtend",
                 FIRST
                 + timedelta(
-                    days=weekday, weeks=startWeek - 1, hours=eHour, minutes=eMin
+                    days=weekday, weeks=start_week - 1, hours=end_hour, minutes=end_min
                 ),
             )
             event.add("dtstamp", datetime.utcnow())
@@ -88,7 +85,7 @@ def data_to_ics(data):
                 {
                     "freq": "weekly",
                     "interval": interval,
-                    "count": (endWeek - startWeek) // interval + 1,
+                    "count": (end_week - start_week) // interval + 1,
                 },
             )
             cal.add_component(event)
