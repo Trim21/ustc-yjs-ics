@@ -4,6 +4,7 @@ import httpx
 from bs4 import BeautifulSoup
 from pytz import timezone
 from yarl import URL
+from ttlru import TTLRU
 from fastapi import Query, FastAPI
 from icalendar import Event, Calendar
 from fastapi.responses import Response
@@ -130,19 +131,13 @@ async def get_calendar(username, password):
     if not (session_id_name and session_id_value):
         raise ValueError()
     href = soup.find("a", id="mm_2").attrs["href"]
-    await session.get(
-        str(
-            URL(href).update_query(
-                {session_id_name: session_id_value},
-            )
-        )
-    )
-    redirector_page = await session.get("https://jw.ustc.edu.cn/for-std/course-table")
-    soup = BeautifulSoup(redirector_page.text, "html.parser")
+    await session.get(str(URL(href).update_query({session_id_name: session_id_value})))
+    redirect_page = await session.get("https://jw.ustc.edu.cn/for-std/course-table")
+    soup = BeautifulSoup(redirect_page.text, "html.parser")
     week_index = soup.select_one(
         "select#allSemesters > option[selected='selected']"
     ).attrs["value"]
-    student_id = redirector_page.url.path.split("/")[-1]
+    student_id = redirect_page.url.path.split("/")[-1]
     data = await session.get(
         f"https://jw.ustc.edu.cn/for-std/course-table/semester/{week_index}/print-data/{student_id}?weekIndex="
     )
@@ -158,6 +153,18 @@ class CalendarResponse(Response):
     # pass
 
 
+cache = TTLRU(30, ttl=60 * 60 * 24 * 1000000000)
+
+
 @app.get("/dispatch", response_class=CalendarResponse)
 async def dispatch(username: str = Query(...), password: str = Query(...)):
-    return await get_calendar(username, password)
+    key = (username, password)
+    r = cache.get(key, None)
+    if r is None:
+        print("not cached")
+        data = await get_calendar(username, password)
+        cache[key] = data
+        return data
+    else:
+        print("cached")
+        return r

@@ -13,6 +13,7 @@ icalendar = '4.0.7'
 yarl = "1.5.1"
 httpx = "0.14.3"
 fastapi = "0.61.1"
+ttlru-dict = "1.0.1"
 
 [tool.poetry.dev-dependencies]
 # tests
