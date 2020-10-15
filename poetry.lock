@@ -63,14 +63,6 @@ optional = false
 python-versions = ">=3.6.1"
 
 [[package]]
-name = "chardet"
-version = "3.0.4"
-description = "Universal encoding detector for Python 2 and 3"
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
 name = "click"
 version = "7.1.2"
 description = "Composable command line interface toolkit"
@@ -278,22 +270,22 @@ python-versions = "*"
 
 [[package]]
 name = "httpcore"
-version = "0.10.2"
+version = "0.12.0"
 description = "A minimal low-level HTTP client."
 category = "main"
 optional = false
 python-versions = ">=3.6"
 
 [package.dependencies]
-h11 = ">=0.8,<0.10"
+h11 = "<1.0.0"
 sniffio = ">=1.0.0,<2.0.0"
 
 [package.extras]
-http2 = ["h2 (>=3.0.0,<4.0.0)"]
+http2 = ["h2 (>=3,<5)"]
 
 [[package]]
 name = "httpx"
-version = "0.14.3"
+version = "0.16.1"
 description = "The next generation HTTP client."
 category = "main"
 optional = false
@@ -301,8 +293,7 @@ python-versions = ">=3.6"
 
 [package.dependencies]
 certifi = "*"
-chardet = ">=3.0.0,<4.0.0"
-httpcore = ">=0.10.0,<0.11.0"
+httpcore = ">=0.12.0,<0.13.0"
 rfc3986 = {version = ">=1.3,<2", extras = ["idna2008"]}
 sniffio = "*"
 
@@ -724,7 +715,7 @@ testing = ["pytest (>=3.5,<3.7.3 || >3.7.3)", "pytest-checkdocs (>=1.2.3)", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.6.1"
-content-hash = "d0febad39cfe48f4b9be0e53a756a362aa3be442bca5147081da053817e30439"
+content-hash = "536bb3cf6818f78859b313180deecd56145c620a497b83120ba8b83d038f8bdb"
 
 [metadata.files]
 appdirs = [
@@ -751,10 +742,6 @@ certifi = [
 cfgv = [
     {file = "cfgv-3.2.0-py2.py3-none-any.whl", hash = "sha256:32e43d604bbe7896fe7c248a9c2276447dbef840feb28fe20494f62af110211d"},
     {file = "cfgv-3.2.0.tar.gz", hash = "sha256:cf22deb93d4bcf92f345a5c3cd39d3d41d6340adc60c78bbbd6588c384fda6a1"},
-]
-chardet = [
-    {file = "chardet-3.0.4-py2.py3-none-any.whl", hash = "sha256:fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"},
-    {file = "chardet-3.0.4.tar.gz", hash = "sha256:84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae"},
 ]
 click = [
     {file = "click-7.1.2-py2.py3-none-any.whl", hash = "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"},
@@ -863,12 +850,12 @@ h11 = [
     {file = "h11-0.9.0.tar.gz", hash = "sha256:33d4bca7be0fa039f4e84d50ab00531047e53d6ee8ffbc83501ea602c169cae1"},
 ]
 httpcore = [
-    {file = "httpcore-0.10.2-py3-none-any.whl", hash = "sha256:afc1402fcaa6fca057bb3a9c6ccf6989a17bd0393b0cffbd778bac5fdd27446b"},
-    {file = "httpcore-0.10.2.tar.gz", hash = "sha256:93a4caf743e7ed29dbf7900515f0917babaa26bfaae6fb6c922ca1228519d400"},
+    {file = "httpcore-0.12.0-py3-none-any.whl", hash = "sha256:18c4afcbfe884b635e59739105aed1692e132bc5d31597109f3c1c97e4ec1cac"},
+    {file = "httpcore-0.12.0.tar.gz", hash = "sha256:2526a38f31ac5967d38b7f593b5d8c4bd3fa82c21400402f866ba3312946acbf"},
 ]
 httpx = [
-    {file = "httpx-0.14.3-py3-none-any.whl", hash = "sha256:3f2aa21d927ac56bfabdb82d079cf5ddd5b3147130dedc5fe8fed3a24e7a8d34"},
-    {file = "httpx-0.14.3.tar.gz", hash = "sha256:96bd4de4e6b742d672e2338720baf98518efaf85c86e0b48218e1bef9f272333"},
+    {file = "httpx-0.16.1-py3-none-any.whl", hash = "sha256:9cffb8ba31fac6536f2c8cde30df859013f59e4bcc5b8d43901cb3654a8e0a5b"},
+    {file = "httpx-0.16.1.tar.gz", hash = "sha256:126424c279c842738805974687e0518a94c7ae8d140cd65b9c4f77ac46ffa537"},
 ]
 icalendar = [
     {file = "icalendar-4.0.7-py2.py3-none-any.whl", hash = "sha256:8c35be16c1d0581a276002af883297aeffa8116e366fdce4d5318e1424aa1903"},
