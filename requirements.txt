@@ -1,4 +1,4 @@
-fastapi==0.61.1
+fastapi==0.61.2
 httpx==0.16.1
 yarl==1.6.3
 beautifulsoup4==4.9.1
