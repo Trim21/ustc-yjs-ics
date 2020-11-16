@@ -8,7 +8,7 @@ authors = ['Trim21 <trim21me@gmail.com>']
 [tool.poetry.dependencies]
 python = "^3.6.1"
 # deps
-beautifulsoup4 = '4.9.1'
+beautifulsoup4 = '==4.9.3'
 icalendar = '4.0.7'
 yarl = "==1.6.3"
 httpx = "==0.16.1"

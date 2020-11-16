@@ -1,6 +1,6 @@
 fastapi==0.61.2
 httpx==0.16.1
 yarl==1.6.3
-beautifulsoup4==4.9.1
+beautifulsoup4==4.9.3
 icalendar==4.0.7
 ttlru-dict==1.0.1
