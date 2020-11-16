@@ -20,7 +20,7 @@ ttlru-dict = "1.0.1"
 coverage = { version = "==5.3", extras = ['toml'] }
 pytest = "==6.1.2"
 # lint
-pre-commit = '==2.7.1'
+pre-commit = '==2.8.2'
 mypy = "==0.790"
 flake8 = "==3.8.4"
 flake8-comprehensions = "==3.3.0"
