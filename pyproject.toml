@@ -17,7 +17,7 @@ ttlru-dict = "1.0.1"
 
 [tool.poetry.dev-dependencies]
 # tests
-coverage = { version = "==5.3", extras = ['toml'] }
+coverage = { version = "==5.5", extras = ['toml'] }
 pytest = "==6.1.2"
 # lint
 pre-commit = '==2.8.2'
