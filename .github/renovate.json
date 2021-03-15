@@ -22,9 +22,6 @@
       ],
       "semanticCommitType": "build",
       "groupName": "deps-prod",
-      "depTypeList": [
-        "dependencies"
-      ],
       "packagePatterns": [
         "fastapi",
         "httpx",
