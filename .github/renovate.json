@@ -42,7 +42,15 @@
       ],
       "semanticCommitType": "chore",
       "groupName": "deps-dev",
-      "semanticCommitScope": "dev"
+      "semanticCommitScope": "dev",
+      "packagePatterns": [
+        "coverage",
+        "pytest",
+        "pre-commit",
+        "mypy",
+        "^flake8",
+        "uvicorn"
+      ]
     }
   ]
 }
