@@ -1,1 +1,2 @@
-https://ustc-yjs-ics.vercel.app/dispatch?username=${username}&password=${password}
+
+由于现在登录有验证码了，我又懒的做打码 ，所以项目废弃
