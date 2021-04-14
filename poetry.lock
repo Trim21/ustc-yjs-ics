@@ -178,7 +178,7 @@ importlib-metadata = {version = ">=0.9", markers = "python_version < \"3.8\""}
 
 [[package]]
 name = "flake8-bugbear"
-version = "21.3.2"
+version = "21.4.3"
 description = "A plugin for flake8 finding likely bugs and design problems in your program. Contains warnings that don't belong in pyflakes and pycodestyle."
 category = "dev"
 optional = false
@@ -193,7 +193,7 @@ dev = ["coverage", "black", "hypothesis", "hypothesmith"]
 
 [[package]]
 name = "flake8-comprehensions"
-version = "3.3.1"
+version = "3.4.0"
 description = "A flake8 plugin to help you write better list/set/dict comprehensions."
 category = "dev"
 optional = false
@@ -251,7 +251,7 @@ python-versions = ">=3.6,<4.0"
 
 [[package]]
 name = "flake8-pytest-style"
-version = "1.4.0"
+version = "1.4.1"
 description = "A flake8 plugin checking common style issues or inconsistencies with pytest-based tests."
 category = "dev"
 optional = false
@@ -453,7 +453,7 @@ dev = ["pre-commit", "tox"]
 
 [[package]]
 name = "pre-commit"
-version = "2.11.1"
+version = "2.12.0"
 description = "A framework for managing and maintaining multi-language pre-commit hooks."
 category = "dev"
 optional = false
@@ -519,7 +519,7 @@ python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
 name = "pytest"
-version = "6.2.2"
+version = "6.2.3"
 description = "pytest: simple powerful testing with Python"
 category = "dev"
 optional = false
@@ -714,7 +714,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.6.1"
-content-hash = "6fcf0ee2c6d5b7e3364542d66a5c4373cb7b2e5f88070d0e4ccfe003fe113dc7"
+content-hash = "b449409d3198024544939436592da719815398fd039a27281224457ee9cc81ba"
 
 [metadata.files]
 appdirs = [
@@ -835,12 +835,12 @@ flake8-2020 = [
     {file = "flake8_2020-1.6.0.tar.gz", hash = "sha256:3e438d9d531577fbb9332bbd0bf394eca890f3b7a5311e2278fb3582381a2f13"},
 ]
 flake8-bugbear = [
-    {file = "flake8-bugbear-21.3.2.tar.gz", hash = "sha256:cadce434ceef96463b45a7c3000f23527c04ea4b531d16c7ac8886051f516ca0"},
-    {file = "flake8_bugbear-21.3.2-py36.py37.py38-none-any.whl", hash = "sha256:5d6ccb0c0676c738a6e066b4d50589c408dcc1c5bf1d73b464b18b73cd6c05c2"},
+    {file = "flake8-bugbear-21.4.3.tar.gz", hash = "sha256:2346c81f889955b39e4a368eb7d508de723d9de05716c287dc860a4073dc57e7"},
+    {file = "flake8_bugbear-21.4.3-py36.py37.py38-none-any.whl", hash = "sha256:4f305dca96be62bf732a218fe6f1825472a621d3452c5b994d8f89dae21dbafa"},
 ]
 flake8-comprehensions = [
-    {file = "flake8-comprehensions-3.3.1.tar.gz", hash = "sha256:e734bf03806bb562886d9bf635d23a65a1a995c251b67d7e007a7b608af9bd22"},
-    {file = "flake8_comprehensions-3.3.1-py3-none-any.whl", hash = "sha256:6d80dfafda0d85633f88ea5bc7de949485f71f1e28db7af7719563fe5f62dcb1"},
+    {file = "flake8-comprehensions-3.4.0.tar.gz", hash = "sha256:c00039be9f3959a26a98da3024f0fe809859bf1753ccb90e228cc40f3ac31ca7"},
+    {file = "flake8_comprehensions-3.4.0-py3-none-any.whl", hash = "sha256:7258a28e229fb9a8d16370b9c47a7d66396ba0201abb06c9d11df41b18ed64c4"},
 ]
 flake8-eradicate = [
     {file = "flake8-eradicate-1.0.0.tar.gz", hash = "sha256:fe7167226676823d50cf540532302a6f576c5a398c5260692571a05ef72c5f5b"},
@@ -859,8 +859,8 @@ flake8-plugin-utils = [
     {file = "flake8_plugin_utils-1.3.1-py3-none-any.whl", hash = "sha256:efdbf9d15b18f72b7c348dd360f30e7cf3e73aa67ff832d5343eb5aa1115f250"},
 ]
 flake8-pytest-style = [
-    {file = "flake8-pytest-style-1.4.0.tar.gz", hash = "sha256:f51bf5c8f657ad4b4938bfedb9a5b84fb0885f72ac07b406ebb7f5ea83f8b74e"},
-    {file = "flake8_pytest_style-1.4.0-py3-none-any.whl", hash = "sha256:f8b6f24b15b28f317eee1bd354f38427007d527774e2ac8ae8b936e6e7eda604"},
+    {file = "flake8-pytest-style-1.4.1.tar.gz", hash = "sha256:1bd3b7bb95608d6b70daebb0b0ee636be92d8175527f2e9919cbeb76f7515118"},
+    {file = "flake8_pytest_style-1.4.1-py3-none-any.whl", hash = "sha256:bc4c10e5fcc2a20937bb6ce523579e9f91adfcb5403dce3adda5ac7c9bce364f"},
 ]
 h11 = [
     {file = "h11-0.9.0-py2.py3-none-any.whl", hash = "sha256:4bc6d6a1238b7615b266ada57e0618568066f57dd6fa967d1290ec9309b2f2f1"},
@@ -976,8 +976,8 @@ pluggy = [
     {file = "pluggy-0.13.1.tar.gz", hash = "sha256:15b2acde666561e1298d71b523007ed7364de07029219b604cf808bfa1c765b0"},
 ]
 pre-commit = [
-    {file = "pre_commit-2.11.1-py2.py3-none-any.whl", hash = "sha256:94c82f1bf5899d56edb1d926732f4e75a7df29a0c8c092559c77420c9d62428b"},
-    {file = "pre_commit-2.11.1.tar.gz", hash = "sha256:de55c5c72ce80d79106e48beb1b54104d16495ce7f95b0c7b13d4784193a00af"},
+    {file = "pre_commit-2.12.0-py2.py3-none-any.whl", hash = "sha256:029d53cb83c241fe7d66eeee1e24db426f42c858f15a38d20bcefd8d8e05c9da"},
+    {file = "pre_commit-2.12.0.tar.gz", hash = "sha256:46b6ffbab37986c47d0a35e40906ae029376deed89a0eb2e446fb6e67b220427"},
 ]
 py = [
     {file = "py-1.9.0-py2.py3-none-any.whl", hash = "sha256:366389d1db726cd2fcfc79732e75410e5fe4d31db13692115529d34069a043c2"},
@@ -1015,8 +1015,8 @@ pyparsing = [
     {file = "pyparsing-2.4.7.tar.gz", hash = "sha256:c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1"},
 ]
 pytest = [
-    {file = "pytest-6.2.2-py3-none-any.whl", hash = "sha256:b574b57423e818210672e07ca1fa90aaf194a4f63f3ab909a2c67ebb22913839"},
-    {file = "pytest-6.2.2.tar.gz", hash = "sha256:9d1edf9e7d0b84d72ea3dbcdfd22b35fb543a5e8f2a60092dd578936bf63d7f9"},
+    {file = "pytest-6.2.3-py3-none-any.whl", hash = "sha256:6ad9c7bdf517a808242b998ac20063c41532a570d088d77eec1ee12b0b5574bc"},
+    {file = "pytest-6.2.3.tar.gz", hash = "sha256:671238a46e4df0f3498d1c3270e5deb9b32d25134c99b7d75370a68cfbe9b634"},
 ]
 python-dateutil = [
     {file = "python-dateutil-2.8.1.tar.gz", hash = "sha256:73ebfe9dbf22e832286dafa60473e4cd239f8592f699aa5adaf10050e6e1823c"},
